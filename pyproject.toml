@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sarif-sourcecheck"
+version = "0.1.0"
+description = "Check SARIF source mappings against a local checkout before uploading alerts."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "KanadeK"}]
+dependencies = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.urls]
+Repository = "https://github.com/KanadeK/sarif-sourcecheck"
+Issues = "https://github.com/KanadeK/sarif-sourcecheck/issues"
+
+[project.scripts]
+sarif-sourcecheck = "sarif_sourcecheck.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S603", "S607"]
+"scripts/*" = ["S603", "S607"]
+
+[tool.coverage.run]
+branch = true
+source = ["sarif_sourcecheck"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85

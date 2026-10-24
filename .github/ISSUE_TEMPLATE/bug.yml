@@ -1,0 +1,10 @@
+name: Bug report
+description: Report a reproducible failure using synthetic data
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Version, OS, command, synthetic input, expected and actual result. Do not include private data.
+    validations:
+      required: true
